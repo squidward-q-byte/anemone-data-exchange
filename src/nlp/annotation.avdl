@@ -1,0 +1,52 @@
+@namespace("ade.nlp")
+
+protocol NLPProtocol {
+
+  // The smallest unit of text analysis.
+  record Token {
+    int index;
+    string text;
+    string pos_tag;
+    int start_char_offset;
+    int end_char_offset;
+    string lemma;
+  }
+
+  // Represents a dependency relationship between two tokens.
+  record Dependency {
+    int head_token_index;
+    int dependent_token_index;
+    string relation;
+  }
+
+  // Represents a Named Entity or a span of text with a label.
+  record Entity {
+    string entity_type;
+    int start_token_index;
+    int end_token_index;
+    union { null, float } confidence;
+  }
+
+  // Captures sentiment analysis results for a given text span.
+  record Sentiment {
+    string label;
+    float score;
+  }
+
+  // Represents a single processed sentence, grouping all its analysis results.
+  record SentenceAnnotation {
+    string text;
+    array<Token> tokens;
+    array<Dependency> dependencies;
+    array<Entity> entities;
+    union { null, Sentiment } sentence_sentiment;
+  }
+
+  // The top-level message for all NLP analysis on a single document or text input.
+  record DocumentAnnotation {
+    string document_id;
+    string raw_text;
+    array<SentenceAnnotation> sentences;
+    union { null, Sentiment } document_sentiment;
+  }
+}

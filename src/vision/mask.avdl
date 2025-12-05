@@ -1,0 +1,41 @@
+@namespace("ade.vision")
+
+protocol VisionProtocol {
+
+  // Represents a 2D coordinate point.
+  record Point2D {
+    float x;
+    float y;
+  }
+
+  // Represents a single, continuous boundary (contour) of a mask.
+  record SingleContourMask {
+    array<Point2D> vertices;
+  }
+
+  // Represents a mask composed of multiple disconnected segments/contours.
+  record MultiPolygonMask {
+    array<SingleContourMask> contours;
+  }
+
+  // Represents a mask using Run-Length Encoding (RLE).
+  record RLEMask {
+    array<int> counts;
+    union { null, int } height;
+    union { null, int } width;
+  }
+
+  // Represents a dense, uncompressed binary mask.
+  record Bitmask {
+    bytes data;
+    int height;
+    int width;
+    union { null, int } offset_x;
+    union { null, int } offset_y;
+  }
+
+  // A flexible message representing a 2D segmentation mask.
+  record ImageMask {
+    union { null, SingleContourMask, RLEMask, Bitmask, MultiPolygonMask } mask_format;
+  }
+}

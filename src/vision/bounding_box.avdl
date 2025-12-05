@@ -1,0 +1,42 @@
+@namespace("ade.vision")
+
+protocol VisionBoundingBoxProtocol {
+
+  // Coordinate system types
+  enum CoordinateSystem {
+    COORDINATE_SYSTEM_UNSPECIFIED,
+    COORDINATE_SYSTEM_ABSOLUTE_XYWH,
+    COORDINATE_SYSTEM_ABSOLUTE_MINMAX,
+    COORDINATE_SYSTEM_NORMALIZED_XYWH
+  }
+
+  // Top-left (X,Y) with Width/Height
+  record XYWH {
+    float x;
+    float y;
+    float width;
+    float height;
+  }
+
+  // Min/Max coordinates
+  record XYMinMax {
+    float x_min;
+    float y_min;
+    float x_max;
+    float y_max;
+  }
+
+  // Normalized coordinates (0.0–1.0)
+  record NormalizedXYWH {
+    float normalized_x;
+    float normalized_y;
+    float normalized_width;
+    float normalized_height;
+  }
+
+  // Flexible bounding box
+  record BoundingBox {
+    CoordinateSystem system_type;
+    union { null, XYWH, XYMinMax, NormalizedXYWH } box_format;
+  }
+}

@@ -1,0 +1,22 @@
+@namespace("ade.timeseries")
+
+protocol TimeSeriesProtocol {
+
+  // Timestamp equivalent (similar to google.protobuf.Timestamp)
+  record Timestamp {
+    long seconds;   // seconds since epoch
+    int nanos;      // nanoseconds offset
+  }
+
+  // A single observation (value) at a specific time.
+  record TimeSeriesPoint {
+    Timestamp time;
+    union { null, double, long, boolean, string } value_type;
+  }
+
+  // Represents a single set of observations for one variable over time.
+  record TimeSeries {
+    array<TimeSeriesPoint> points;
+    map<string> metadata;
+  }
+}

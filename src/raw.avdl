@@ -1,0 +1,33 @@
+@namespace("ade")
+
+protocol TensorProtocol {
+
+  record Float32Tensor {
+    array<long> shape;
+    array<float> values;
+  }
+
+  record Float64Tensor {
+    array<long> shape;
+    array<double> values;
+  }
+
+  record Int32Tensor {
+    array<long> shape;
+    array<int> values;
+  }
+
+  record Int64Tensor {
+    array<long> shape;
+    array<long> values;
+  }
+
+  record BoolTensor {
+    array<long> shape;
+    array<boolean> values;
+  }
+
+  record Tensor {
+    union { null, Float32Tensor, Float64Tensor, Int32Tensor, Int64Tensor, BoolTensor } tensor;
+  }
+}

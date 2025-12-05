@@ -1,0 +1,34 @@
+@namespace("ade")
+
+protocol DatasetProtocol {
+
+  enum FeatureRole {
+    FEATURE_ROLE_UNSPECIFIED,
+    INPUT,
+    TARGET,
+    META
+  }
+
+  record FeatureStats {
+    // Define fields here if needed; left empty since not specified in proto
+  }
+
+  record FeatureInfo {
+    string name;
+    FeatureRole role;
+    string description;
+    union { null, FeatureStats } stats;
+  }
+
+  record DatasetSource {
+    string uri;
+    string version;
+    string author;
+    string created_at;
+  }
+
+  record Dataset {
+    array<FeatureInfo> features;
+    DatasetSource source;
+  }
+}

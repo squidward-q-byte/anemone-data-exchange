@@ -1,0 +1,13 @@
+@namespace("ade.timeseries")
+
+protocol AnomalyProtocol {
+
+  import idl "./timeseries.avdl";
+
+  record Anomaly {
+    ade.timeseries.TimeSeriesPoint anomalous_point;
+    double anomaly_score;
+    union { null, string } explanation;
+    union { null, double } expected_value;
+  }
+}

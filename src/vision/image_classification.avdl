@@ -1,0 +1,44 @@
+@namespace("ade.vision")
+protocol ImageClassificationService {
+
+    // --- Imports (assuming these are defined in separate AVDL/AVSC files) ---
+    import idl "./image.avdl";        // Defines 'Image' record
+    import idl "../label.avdl";       // Defines 'Label' record
+    
+    // --- Data Types (Records) ---
+    
+    /**
+     * Defines the request payload for object detection.
+     */
+    record ImageClassificationRequest {
+        /** The image data, typically sent as a byte array (bytes). */
+        Image image_data; 
+        
+        /** Optional: The confidence threshold for filtering predictions (0.0 to 1.0). */
+        union {null, float} confidence_threshold = 0.5;
+    }
+    
+    /**
+     * Defines the response payload containing all detection results.
+     */
+    record ImageClassificationResponse {
+        /** A list of all detected objects in the image. */
+        array<ade.PredictedLabel> predictions;
+        
+        /** Optional: The total time taken for the inference call, in milliseconds. */
+        union {null, long} inference_time_ms = null;
+    }
+    
+    /**
+     * Error used if the image data cannot be processed (e.g., invalid format).
+     */
+    error ImageProcessingError {
+        string reason;
+    }
+
+
+    /**
+     * Remotely executes object detection on the provided image data.
+     */
+    ImageClassificationResponse detect(ImageClassificationRequest request) throws ImageProcessingError;
+}

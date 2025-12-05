@@ -1,0 +1,9 @@
+@namespace("ade.embeddings")
+
+protocol EmbeddingsProtocol {
+
+  record Embedding {
+    array<float> vector;
+  }
+
+}

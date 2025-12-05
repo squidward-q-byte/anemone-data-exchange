@@ -1,0 +1,16 @@
+@namespace("ade")
+
+protocol LabelProtocol {
+
+  record Label {
+    string text;
+    int id;
+    union { null, string } description = null;
+  }
+
+  record PredictedLabel {
+    string text;
+    int id;
+    union { null, float } confidence = null;
+  }
+}

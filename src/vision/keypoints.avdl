@@ -1,0 +1,25 @@
+@namespace("ade.vision")
+protocol KeypointProtocol {
+
+  record Keypoint2D {
+    string name;
+
+    /** coordinates in image space */
+    float x;
+    float y;
+  }
+
+  record Keypoint3D {
+    string name;
+
+    /** coordinates in image space */
+    float x;
+    float y;
+    float z;
+  }
+  
+
+  record Keypoint {
+    union { Keypoint2D, Keypoint3D } keypoint;
+  }
+}

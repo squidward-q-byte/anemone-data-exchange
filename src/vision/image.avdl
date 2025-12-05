@@ -1,0 +1,42 @@
+@namespace("ade.vision")
+
+protocol VisionProtocol {
+
+  // --- Specific Image Types ---
+
+  // Represents an image stored as a PNG byte array
+  record PngImage {
+    bytes data;
+  }
+
+  // Represents an image stored as a JPG byte array
+  record JpgImage {
+    bytes data;
+  }
+
+  // Represents raw pixel data with metadata for channel interpretation
+  record RawImage {
+    /** The raw pixel data. Interpretation depends on the 'channels' field. */
+    bytes data;
+    
+    /** The width of the image in pixels. */
+    int width;
+    
+    /** The height of the image in pixels. */
+    int height;
+    
+    /** The channel configuration. 'RGBA', 'RGB', or 'GREY'. */
+    string channels; 
+  }
+
+  // --- Generic Image Wrapper ---
+
+  /** A flexible message representing an image, supporting various formats and types. */
+  record Image {
+    /**
+     * The actual image data, which can be one of the defined types.
+     * The union allows for a single record to hold different image formats.
+     */
+    union {ade.vision.PngImage, ade.vision.JpgImage, ade.vision.RawImage} image_variant;
+  }
+}

@@ -1,0 +1,62 @@
+/**
+ * Protocol for a real-time Object Detection Service.
+ */
+@namespace("ade.vision")
+protocol ObjectDetectionService {
+
+    // --- Imports (assuming these are defined in separate AVDL/AVSC files) ---
+    import idl "./bounding_box.avdl"; // Defines 'BoundingBox' record
+    import idl "./image.avdl";        // Defines 'Image' record
+    import idl "../label.avdl";       // Defines 'Label' record
+    
+    // --- Data Types (Records) ---
+    
+    /**
+     * Defines the structure for a single predicted object.
+     */
+    record DetectedObject {
+        /** The type of object detected. */
+        ade.Label label;
+        
+        /** The coordinates defining the object's area in the frame. */
+        BoundingBox box;
+        
+        /** The model's certainty that the object is correctly identified (0.0 to 1.0). */
+        float confidence;
+    }
+    
+    /**
+     * Defines the request payload for object detection.
+     */
+    record DetectionRequest {
+        /** The image data, typically sent as a byte array (bytes). */
+        Image image_data; 
+        
+        /** Optional: The confidence threshold for filtering predictions (0.0 to 1.0). */
+        union {null, float} confidence_threshold = 0.5;
+    }
+    
+    /**
+     * Defines the response payload containing all detection results.
+     */
+    record DetectionResponse {
+        /** A list of all detected objects in the image. */
+        array<DetectedObject> predictions;
+        
+        /** Optional: The total time taken for the inference call, in milliseconds. */
+        union {null, long} inference_time_ms = null;
+    }
+    
+    /**
+     * Error used if the image data cannot be processed (e.g., invalid format).
+     */
+    error ImageProcessingError {
+        string reason;
+    }
+
+
+    /**
+     * Remotely executes object detection on the provided image data.
+     */
+    DetectionResponse detect(DetectionRequest request) throws ImageProcessingError;
+}
