@@ -1,0 +1,14 @@
+@namespace("ade.tabular")
+
+protocol TabularForecasting {
+    import idl "raw.avdl";
+
+    record TabularForecastingRequest {
+        ade.tabular.Table table;
+        int num_future_steps;
+    }
+
+    record TabularForecastingResponse {
+        ade.tabular.Table forecasted_table;
+    }
+}

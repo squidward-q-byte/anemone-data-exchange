@@ -1,0 +1,17 @@
+@namespace("ade.tabular")
+
+protocol TabularClustering {
+    import idl "raw.avdl";
+
+    record Cluster {
+        int cluster_id;
+    }
+
+    record TabularClusteringRequest {
+        ade.tabular.Table table;
+    }
+
+    record TabularClusteringResponse {
+        array<Cluster> clusters;
+    }
+}

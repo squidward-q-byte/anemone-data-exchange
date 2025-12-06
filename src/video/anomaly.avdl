@@ -1,0 +1,19 @@
+@namespace("ade.video")
+
+protocol AnomalyDetection {
+    import idl "raw.avdl";
+
+    record AnomalyScore {
+        float score;
+        boolean is_anomaly;
+        float timestamp;
+    }
+
+    record AnomalyDetectionRequest {
+        ade.video.Video video;
+    }
+
+    record AnomalyDetectionResponse {
+        array<AnomalyScore> anomaly_scores;
+    }
+}

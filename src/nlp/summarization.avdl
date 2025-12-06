@@ -1,0 +1,14 @@
+@namespace("ade.nlp")
+
+protocol Summarization {
+
+    record SummarizationRequest {
+        string text;
+        int? max_length;
+        int? min_length;
+    }
+
+    record SummarizationResponse {
+        string summary;
+    }
+}

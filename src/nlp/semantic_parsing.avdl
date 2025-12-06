@@ -1,0 +1,12 @@
+@namespace("ade.nlp")
+
+protocol SemanticParsing {
+
+    record SemanticParsingRequest {
+        string text;
+    }
+
+    record SemanticParsingResponse {
+        string logical_form;
+    }
+}

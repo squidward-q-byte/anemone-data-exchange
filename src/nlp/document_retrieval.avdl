@@ -1,0 +1,18 @@
+@namespace("ade.nlp")
+
+protocol DocumentRetrieval {
+    record Document {
+        string id;
+        string text;
+        float score;
+    }
+
+    record DocumentRetrievalRequest {
+        string query;
+        int top_k;
+    }
+
+    record DocumentRetrievalResponse {
+        array<Document> documents;
+    }
+}

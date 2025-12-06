@@ -1,0 +1,13 @@
+@namespace("ade.tabular")
+
+protocol TabularRegression {
+    import idl "raw.avdl";
+
+    record TabularRegressionRequest {
+        ade.tabular.Table table;
+    }
+
+    record TabularRegressionResponse {
+        array<double> predictions;
+    }
+}

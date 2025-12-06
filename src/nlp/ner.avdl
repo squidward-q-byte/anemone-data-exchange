@@ -1,0 +1,13 @@
+@namespace("ade.nlp")
+
+protocol NamedEntityRecognition {
+    import idl "annotation.avdl";
+
+    record NerRequest {
+        string text;
+    }
+
+    record NerResponse {
+        array<Annotation> annotations;
+    }
+}

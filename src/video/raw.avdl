@@ -1,0 +1,10 @@
+@namespace("ade.video")
+
+protocol RawVideo {
+    import idl "../vision/image.avdl";
+
+    record Video {
+        array<ade.vision.Image> frames;
+        float fps;
+    }
+}

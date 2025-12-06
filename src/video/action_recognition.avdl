@@ -1,0 +1,20 @@
+@namespace("ade.video")
+
+protocol ActionRecognition {
+    import idl "raw.avdl";
+    import idl "../label.avdl";
+
+    record Action {
+        ade.Label action_label;
+        float start_time;
+        float end_time;
+    }
+
+    record ActionRecognitionRequest {
+        ade.video.Video video;
+    }
+
+    record ActionRecognitionResponse {
+        array<Action> actions;
+    }
+}

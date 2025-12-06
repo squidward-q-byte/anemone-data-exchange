@@ -1,0 +1,13 @@
+@namespace("ade.nlp")
+
+protocol Classification {
+    import idl "../label.avdl";
+
+    record ClassificationRequest {
+        string text;
+    }
+
+    record ClassificationResponse {
+        array<ade.Label> labels;
+    }
+}

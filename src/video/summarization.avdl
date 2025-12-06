@@ -1,0 +1,13 @@
+@namespace("ade.video")
+
+protocol VideoSummarization {
+    import idl "raw.avdl";
+
+    record VideoSummarizationRequest {
+        ade.video.Video video;
+    }
+
+    record VideoSummarizationResponse {
+        ade.video.Video summary;
+    }
+}

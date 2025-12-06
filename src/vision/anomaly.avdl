@@ -1,0 +1,18 @@
+@namespace("ade.vision")
+
+protocol AnomalyDetection {
+    import idl "image.avdl";
+
+    record AnomalyScore {
+        float score;
+        boolean is_anomaly;
+    }
+
+    record AnomalyDetectionRequest {
+        ade.vision.Image image;
+    }
+
+    record AnomalyDetectionResponse {
+        AnomalyScore anomaly_score;
+    }
+}

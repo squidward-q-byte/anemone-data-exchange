@@ -1,0 +1,14 @@
+@namespace("ade.tabular")
+
+protocol TabularClassification {
+    import idl "raw.avdl";
+    import idl "../label.avdl";
+
+    record TabularClassificationRequest {
+        ade.tabular.Table table;
+    }
+
+    record TabularClassificationResponse {
+        array<ade.Label> labels;
+    }
+}

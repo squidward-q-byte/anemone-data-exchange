@@ -1,0 +1,18 @@
+@namespace("ade.video")
+
+protocol MotionCapture {
+    import idl "raw.avdl";
+    import idl "../vision/keypoints.avdl";
+
+    record Skeleton {
+        array<ade.vision.Keypoint> keypoints_per_frame;
+    }
+
+    record MotionCaptureRequest {
+        ade.video.Video video;
+    }
+
+    record MotionCaptureResponse {
+        array<Skeleton> skeletons;
+    }
+}

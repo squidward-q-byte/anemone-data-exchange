@@ -1,0 +1,15 @@
+@namespace("ade.multimodal")
+
+protocol MultimodalSentiment {
+    import idl "../vision/image.avdl";
+    import idl "../nlp/sentiment.avdl";
+
+    record MultimodalSentimentRequest {
+        ade.vision.Image? image;
+        string? text;
+    }
+
+    record MultimodalSentimentResponse {
+       ade.nlp.Sentiment sentiment;
+    }
+}

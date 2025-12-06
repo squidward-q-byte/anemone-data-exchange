@@ -1,0 +1,21 @@
+@namespace("ade.video")
+
+protocol ObjectDetection {
+    import idl "raw.avdl";
+    import idl "../vision/bounding_box.avdl";
+    import idl "../label.avdl";
+
+    record DetectedObject {
+        ade.vision.BoundingBox box;
+        ade.Label object_label;
+        float timestamp;
+    }
+
+    record ObjectDetectionRequest {
+        ade.video.Video video;
+    }
+
+    record ObjectDetectionResponse {
+        array<DetectedObject> detected_objects;
+    }
+}

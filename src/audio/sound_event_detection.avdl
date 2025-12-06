@@ -1,0 +1,20 @@
+@namespace("ade.audio")
+
+protocol SoundEventDetection {
+    import idl "raw.avdl";
+    import idl "../label.avdl";
+
+    record SoundEvent {
+        ade.Label event_label;
+        float start_time;
+        float end_time;
+    }
+
+    record SoundEventDetectionRequest {
+        Audio audio;
+    }
+
+    record SoundEventDetectionResponse {
+        array<SoundEvent> events;
+    }
+}

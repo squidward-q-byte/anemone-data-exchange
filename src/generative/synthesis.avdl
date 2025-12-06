@@ -1,0 +1,14 @@
+@namespace("ade.generative")
+
+protocol DataSynthesis {
+
+    record SynthesisRequest {
+        string data_type;
+        int num_samples;
+        map<string> constraints;
+    }
+
+    record SynthesisResponse {
+        array<bytes> synthetic_data;
+    }
+}

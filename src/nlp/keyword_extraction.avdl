@@ -1,0 +1,18 @@
+@namespace("ade.nlp")
+
+protocol KeywordExtraction {
+
+    record Keyword {
+        string keyword;
+        float score;
+    }
+
+    record KeywordExtractionRequest {
+        string text;
+        int? top_k;
+    }
+
+    record KeywordExtractionResponse {
+        array<Keyword> keywords;
+    }
+}

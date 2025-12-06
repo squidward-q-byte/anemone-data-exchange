@@ -1,0 +1,13 @@
+@namespace("ade.multimodal")
+
+protocol TextToImage {
+    import idl "../vision/image.avdl";
+
+    record TextToImageRequest {
+        string text_prompt;
+    }
+
+    record TextToImageResponse {
+       ade.vision.Image generated_image;
+    }
+}

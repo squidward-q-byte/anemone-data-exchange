@@ -1,0 +1,17 @@
+@namespace("ade.nlp")
+
+protocol SentimentAnalysis {
+
+    record Sentiment {
+        float polarity;
+        float subjectivity;
+    }
+
+    record SentimentAnalysisRequest {
+        string text;
+    }
+
+    record SentimentAnalysisResponse {
+        Sentiment sentiment;
+    }
+}

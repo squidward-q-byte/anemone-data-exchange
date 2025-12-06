@@ -1,0 +1,19 @@
+@namespace("ade.tabular")
+
+protocol Recommendation {
+    import idl "raw.avdl";
+
+    record Item {
+        string item_id;
+        float score;
+    }
+
+    record RecommendationRequest {
+        string user_id;
+        int top_k;
+    }
+
+    record RecommendationResponse {
+        array<Item> recommended_items;
+    }
+}

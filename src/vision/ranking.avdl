@@ -1,0 +1,19 @@
+@namespace("ade.vision")
+
+protocol Ranking {
+    import idl "image.avdl";
+
+    record RankedImage {
+        ade.vision.Image image;
+        float score;
+    }
+
+    record RankingRequest {
+        ade.vision.Image query_image;
+        int top_k;
+    }
+
+    record RankingResponse {
+        array<RankedImage> ranked_images;
+    }
+}

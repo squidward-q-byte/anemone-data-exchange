@@ -1,0 +1,14 @@
+@namespace("ade.audio")
+
+protocol Synthesis {
+    import idl "raw.avdl";
+
+    record SynthesisRequest {
+        string text;
+        string? voice;
+    }
+
+    record SynthesisResponse {
+        Audio audio;
+    }
+}

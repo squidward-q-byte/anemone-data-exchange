@@ -1,0 +1,18 @@
+@namespace("ade.vision")
+
+protocol Caption {
+    import idl "image.avdl";
+
+    record Caption {
+        string caption;
+        float confidence;
+    }
+
+    record CaptioningRequest {
+        ade.vision.Image image;
+    }
+
+    record CaptioningResponse {
+        array<Caption> captions;
+    }
+}

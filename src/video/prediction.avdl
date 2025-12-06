@@ -1,0 +1,14 @@
+@namespace("ade.video")
+
+protocol VideoPrediction {
+    import idl "raw.avdl";
+
+    record VideoPredictionRequest {
+        ade.video.Video video;
+        int num_future_frames;
+    }
+
+    record VideoPredictionResponse {
+        ade.video.Video predicted_video;
+    }
+}

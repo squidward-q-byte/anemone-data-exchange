@@ -1,0 +1,14 @@
+@namespace("ade.audio")
+
+protocol EmotionRecognition {
+    import idl "raw.avdl";
+    import idl "../label.avdl";
+
+    record EmotionRecognitionRequest {
+        Audio audio;
+    }
+
+    record EmotionRecognitionResponse {
+        array<ade.Label> emotions;
+    }
+}

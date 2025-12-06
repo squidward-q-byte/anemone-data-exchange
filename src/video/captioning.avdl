@@ -1,0 +1,19 @@
+@namespace("ade.video")
+
+protocol VideoCaptioning {
+    import idl "raw.avdl";
+
+    record Caption {
+        string caption;
+        float start_time;
+        float end_time;
+    }
+
+    record VideoCaptioningRequest {
+        ade.video.Video video;
+    }
+
+    record VideoCaptioningResponse {
+        array<Caption> captions;
+    }
+}

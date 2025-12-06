@@ -1,0 +1,18 @@
+@namespace("ade.nlp")
+
+protocol Dialogue {
+
+    record Message {
+        string text;
+        string sender; // "user" or "agent"
+        long timestamp;
+    }
+
+    record DialogueRequest {
+        array<Message> history;
+    }
+
+    record DialogueResponse {
+        Message response;
+    }
+}

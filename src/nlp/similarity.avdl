@@ -1,0 +1,13 @@
+@namespace("ade.nlp")
+
+protocol Similarity {
+
+    record SimilarityRequest {
+        string text1;
+        string text2;
+    }
+
+    record SimilarityResponse {
+        float score;
+    }
+}

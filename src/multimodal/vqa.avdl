@@ -1,0 +1,15 @@
+@namespace("ade.multimodal")
+
+protocol VisualQuestionAnswering {
+    import idl "../vision/image.avdl";
+    import idl "../nlp/qa.avdl";
+
+    record VQARequest {
+        ade.vision.Image image;
+        string question;
+    }
+
+    record VQAResponse {
+       ade.nlp.Answer answer;
+    }
+}

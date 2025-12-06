@@ -1,0 +1,13 @@
+@namespace("ade.vision")
+
+protocol DepthMap {
+    import idl "image.avdl";
+
+    record DepthMapRequest {
+        ade.vision.Image image;
+    }
+
+    record DepthMapResponse {
+        ade.vision.Image depth_map;
+    }
+}

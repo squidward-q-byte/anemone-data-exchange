@@ -1,0 +1,14 @@
+@namespace("ade.audio")
+
+protocol AudioClassification {
+    import idl "raw.avdl";
+    import idl "../label.avdl";
+
+    record AudioClassificationRequest {
+        Audio audio;
+    }
+
+    record AudioClassificationResponse {
+        array<ade.Label> labels;
+    }
+}

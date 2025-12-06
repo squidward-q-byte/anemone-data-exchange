@@ -1,0 +1,19 @@
+@namespace("ade.audio")
+
+protocol PhonemeRecognition {
+    import idl "raw.avdl";
+
+    record Phoneme {
+        string phoneme;
+        float start_time;
+        float end_time;
+    }
+
+    record PhonemeRecognitionRequest {
+        Audio audio;
+    }
+
+    record PhonemeRecognitionResponse {
+        array<Phoneme> phonemes;
+    }
+}

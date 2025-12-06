@@ -1,0 +1,17 @@
+@namespace("ade.nlp")
+
+protocol AnomalyDetection {
+
+    record AnomalyScore {
+        float score;
+        boolean is_anomaly;
+    }
+
+    record AnomalyDetectionRequest {
+        string text;
+    }
+
+    record AnomalyDetectionResponse {
+        AnomalyScore anomaly_score;
+    }
+}

@@ -1,0 +1,31 @@
+@namespace("ade.vision")
+
+protocol Pose {
+    import idl "./image.avdl";
+
+    record Point3D {
+        float x;
+        float y;
+        float z;
+    }
+
+    record Quaternion {
+        float x;
+        float y;
+        float z;
+        float w;
+    }
+
+    record Pose6D {
+        Point3D translation;
+        Quaternion rotation;
+    }
+
+    record PoseRequest {
+        ade.vision.Image image;
+    }
+
+    record PoseResponse {
+        Pose6D pose;
+    }
+}

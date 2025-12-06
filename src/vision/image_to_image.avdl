@@ -1,0 +1,14 @@
+@namespace("ade.vision")
+
+protocol ImageToImage {
+    import idl "image.avdl";
+
+    record ImageToImageRequest {
+        ade.vision.Image source_image;
+        string? style; // Optional style hint
+    }
+
+    record ImageToImageResponse {
+        ade.vision.Image generated_image;
+    }
+}

@@ -1,0 +1,31 @@
+@namespace("ade.graph")
+
+protocol GraphGeneration {
+
+    record Node {
+        string id;
+        map<string> properties;
+    }
+
+    record Edge {
+        string source_id;
+        string target_id;
+        string relationship;
+        map<string> properties;
+    }
+
+    record Graph {
+        array<Node> nodes;
+        array<Edge> edges;
+    }
+
+    record GraphGenerationRequest {
+        Graph seed_graph; // can be empty
+        int num_nodes_to_add;
+        int num_edges_to_add;
+    }
+
+    record GraphGenerationResponse {
+        Graph generated_graph;
+    }
+}

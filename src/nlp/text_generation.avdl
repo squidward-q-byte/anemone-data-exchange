@@ -1,0 +1,13 @@
+@namespace("ade.nlp")
+
+protocol TextGeneration {
+
+    record TextGenerationRequest {
+        string prompt;
+        int? max_length;
+    }
+
+    record TextGenerationResponse {
+        string generated_text;
+    }
+}

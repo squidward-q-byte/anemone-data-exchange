@@ -1,0 +1,13 @@
+@namespace("ade.tabular")
+
+protocol RawTabular {
+
+    record Row {
+        map<union{null, int, long, float, double, string, boolean, bytes}> values;
+    }
+
+    record Table {
+        array<string> headers;
+        array<Row> rows;
+    }
+}

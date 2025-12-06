@@ -1,0 +1,13 @@
+@namespace("ade.nlp")
+
+protocol InformationExtraction {
+
+    record InformationExtractionRequest {
+        string text;
+        map<string> schema; // e.g. {"person": "string", "place": "string"}
+    }
+
+    record InformationExtractionResponse {
+        map<string> extracted_data;
+    }
+}

@@ -1,0 +1,12 @@
+@namespace("ade.vision")
+
+protocol BoundingBox3D {
+    import idl "pose.avdl";
+
+    record BoundingBox3D {
+        Pose6D center;
+        float width;
+        float height;
+        float depth;
+    }
+}

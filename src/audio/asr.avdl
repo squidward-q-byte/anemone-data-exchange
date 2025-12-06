@@ -1,0 +1,13 @@
+@namespace("ade.audio")
+
+protocol ASR {
+    import idl "raw.avdl";
+
+    record ASRRequest {
+        Audio audio;
+    }
+
+    record ASRResponse {
+        string text;
+    }
+}

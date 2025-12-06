@@ -1,0 +1,28 @@
+@namespace("ade.vision")
+
+protocol Reconstruction {
+    import idl "image.avdl";
+
+    record Point {
+        float x;
+        float y;
+        float z;
+    }
+
+    record PointCloud {
+        array<Point> points;
+    }
+
+    record Mesh {
+        array<Point> vertices;
+        array<int> indices;
+    }
+
+    record ReconstructionRequest {
+        ade.vision.Image image;
+    }
+
+    record ReconstructionResponse {
+        union { PointCloud, Mesh } reconstruction;
+    }
+}

@@ -1,0 +1,18 @@
+@namespace("ade.nlp")
+
+protocol KnowledgeGraph {
+
+    record Triple {
+        string subject;
+        string predicate;
+        string object;
+    }
+
+    record KnowledgeGraphRequest {
+        string text;
+    }
+
+    record KnowledgeGraphResponse {
+        array<Triple> triples;
+    }
+}

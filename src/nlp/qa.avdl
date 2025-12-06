@@ -1,0 +1,20 @@
+@namespace("ade.nlp")
+
+protocol QuestionAnswering {
+
+    record Answer {
+        string answer;
+        float confidence;
+        int? start_offset;
+        int? end_offset;
+    }
+
+    record QuestionAnsweringRequest {
+        string question;
+        string context;
+    }
+
+    record QuestionAnsweringResponse {
+        array<Answer> answers;
+    }
+}

@@ -1,0 +1,21 @@
+@namespace("ade.rl")
+
+protocol ReinforcementLearning {
+
+    record State {
+         bytes data; // Can be anything from image to text to tabular data
+    }
+
+    record Action {
+        string name;
+        map<float> values;
+    }
+
+    record RLRequest {
+        State current_state;
+    }
+
+    record RLResponse {
+        Action action;
+    }
+}

@@ -1,0 +1,10 @@
+@namespace("ade.audio")
+
+protocol RawAudio {
+    record Audio {
+        bytes data;
+        int sample_rate;
+        int channels;
+        int sample_width;
+    }
+}

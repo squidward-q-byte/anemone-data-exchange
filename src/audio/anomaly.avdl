@@ -1,0 +1,18 @@
+@namespace("ade.audio")
+
+protocol AnomalyDetection {
+    import idl "raw.avdl";
+
+    record AnomalyScore {
+        float score;
+        boolean is_anomaly;
+    }
+
+    record AnomalyDetectionRequest {
+        Audio audio;
+    }
+
+    record AnomalyDetectionResponse {
+        AnomalyScore anomaly_score;
+    }
+}

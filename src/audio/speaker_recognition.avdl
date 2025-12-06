@@ -1,0 +1,18 @@
+@namespace("ade.audio")
+
+protocol SpeakerRecognition {
+    import idl "raw.avdl";
+
+    record SpeakerId {
+        string id;
+        float confidence;
+    }
+
+    record SpeakerRecognitionRequest {
+        Audio audio;
+    }
+
+    record SpeakerRecognitionResponse {
+        array<SpeakerId> speaker_ids;
+    }
+}

@@ -49,4 +49,8 @@ protocol NLPProtocol {
     array<SentenceAnnotation> sentences;
     union { null, Sentiment } document_sentiment;
   }
+
+  record Annotation {
+    
+  }
 }

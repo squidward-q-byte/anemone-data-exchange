@@ -1,0 +1,14 @@
+@namespace("ade.vision")
+
+protocol SuperResolution {
+    import idl "image.avdl";
+
+    record SuperResolutionRequest {
+        ade.vision.Image low_resolution_image;
+        int scale_factor;
+    }
+
+    record SuperResolutionResponse {
+        ade.vision.Image high_resolution_image;
+    }
+}
