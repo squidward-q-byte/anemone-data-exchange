@@ -1,0 +1,12 @@
+{
+  "name": "@anemonestudio/data-exchange",
+  "version": "1.0.0",
+  "description": "Avro to TypeScript generator container",
+  "scripts": {
+    "generate": "avro-ts ./schemas/*.avsc -O ./types && npm run rename",
+    "rename": "sh ./rename-ts.sh"
+  },
+  "dependencies": {
+    "@ovotech/avro-ts-cli": "^3.6.0"
+  }
+}

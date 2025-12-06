@@ -1,0 +1,21 @@
+# 1. Use a lean Node.js image
+FROM node:25-alpine
+
+# 2. Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# 3. Copy the dependency file and install dependencies
+COPY package.json ./
+RUN npm install
+
+COPY rename-ts.sh rename-ts.sh
+RUN chmod +x rename-ts.sh
+
+# 4. Copy the entire project context (including schemas)
+#    Note: We only copy the schemas/ folder when we run the container, 
+#          but for simplicity in this build, we copy all the files
+COPY . . 
+
+# 5. Define the command that runs when the container starts
+#    We use the 'generate' script defined in package.json
+CMD ["npm", "run", "generate"]
