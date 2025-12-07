@@ -7,3 +7,5 @@ A apache avro descriptor for anemone models data
 ## Quicstart
 
 Run `./run.sh` to compile and generate .avsc and .avpr
+
+Use arguments `--python` and `--typescript` to generate also the object inthe right language
