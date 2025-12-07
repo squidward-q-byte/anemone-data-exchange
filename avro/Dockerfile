@@ -24,7 +24,7 @@ WORKDIR /work
 RUN mkdir -p /work/avdl /work/out/avpr /work/out/avsc
 
 # Copy entrypoint script
-COPY build.sh /usr/local/bin/build.sh
+COPY avro/build.sh /usr/local/bin/build.sh
 RUN chmod +x /usr/local/bin/build.sh
 
 # Default command runs the conversion and optional codegen
