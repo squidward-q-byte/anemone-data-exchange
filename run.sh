@@ -4,7 +4,8 @@ INPUT_DIR="./src"
 CACHE_REF="./.cache/run.cache"
 AVRO_BUILD_NEEDED=false
 
-mkdir -p ./.cache
+mkdir -p $PWD/.cache
+mkdir -p $PWD/out
 
 if [[ ! -d "$INPUT_DIR" ]]; then
     echo "Error: Input directory '$INPUT_DIR' not found."
@@ -39,12 +40,17 @@ fi
 for arg in "$@"; do
     if [[ "$arg" == "--python" ]]; then
         docker build -t avro-codegen-python  -f python/Dockerfile .
+        mkdir -p $PWD/out/python/anemone_data_exchange
         docker run --rm \
           -v "$PWD/out/avsc:/app/schemas" \
-          -v "$PWD/out/python:/app/types" \
+          -v "$PWD/out/python/anemone_data_exchange:/app/types" \
           avro-codegen-python
+    cp $PWD/python/setup.py  $PWD/out/python
+    touch $PWD/out/python/anemone_data_exchange/__init__.py
+
+
     elif [[ "$arg" == "--typescript" ]]; then
-        docker build -t avro-codegen-typescript  -f typescript/Dockerfile .
+        docker build -t avro-codegen-typescript -f typescript/Dockerfile .
         docker run --rm \
           -v "$PWD/out/avsc:/usr/src/app/schemas" \
           -v "$PWD/out/typescript:/usr/src/app/types" \

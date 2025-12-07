@@ -43,8 +43,9 @@ def main():
                     f.write(result)
 
                 # Format the output file using isort and black
-                subprocess.run(["isort", output_file])
-                subprocess.run(["black", output_file])
+                # Keep commented for improving execution speed
+                # subprocess.run(["isort", output_file])
+                # subprocess.run(["black", output_file])
 
                 # Make the file read-only
                 os.chmod(output_file, 0o444)
